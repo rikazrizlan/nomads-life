@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import {AuthProvider} from './contexts/AuthContext';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Home from './components/Home';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+      <Router>
+        <AuthProvider>
+          <Switch>
+            <Route path="/app" component={App} />
+            <PrivateRoute exact path="/home" component={Home} />
+          </Switch>
+        </AuthProvider>
+      </Router>,
   document.getElementById('root')
 );
 
