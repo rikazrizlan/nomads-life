@@ -5,6 +5,7 @@ import HikingImg from '../images/hiking2.png';
 import Logo from '../images/logo.png';
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
+import {db} from '../firebase';
 
 function getModalStyle() {
   const top = 50;
@@ -35,6 +36,7 @@ function App() {
   //signup & login
   const emailRef = useRef();
   const passwordRef = useRef();
+  const usernameRef = useRef();
   const { signup, login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -46,8 +48,14 @@ function App() {
     try {
         setError("");
         setLoading(true)
-        await signup(emailRef.current.value, passwordRef.current.value);
-        history.push('/home');
+        await signup(emailRef.current.value, passwordRef.current.value).then(cred => {
+          console.log(cred);
+          return db.collection('users').doc(cred.user.uid).set({
+            username: usernameRef.current.value
+          }).then(() => {
+            history.push('/home');
+          });
+        })
     } catch {
         setError("Failed to create an account");
     }
@@ -85,7 +93,7 @@ function App() {
             <form onSubmit={handleSignUp} className="signup-form">
               <div className="form-group">
                   <label htmlFor="username">Username</label>
-                  <input type="text" required/>
+                  <input type="text" ref={usernameRef} required/>
               </div>
               <div className="form-group">
                   <label htmlFor="email">Email</label>

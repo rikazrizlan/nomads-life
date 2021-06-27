@@ -1,5 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
 import 'firebase/analytics';
 
 const app = firebase.initializeApp({
@@ -13,5 +15,6 @@ const app = firebase.initializeApp({
 })
 
 export const auth = app.auth();
+export const db = app.firestore();
+export const storage = app.storage();
 export const analytics = app.analytics();
-console.log(analytics);

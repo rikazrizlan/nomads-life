@@ -12,6 +12,7 @@ ReactDOM.render(
       <Router>
         <AuthProvider>
           <Switch>
+            <PrivateRoute exact path="/" component={App} />
             <Route path="/app" component={App} />
             <PrivateRoute exact path="/home" component={Home} />
           </Switch>
