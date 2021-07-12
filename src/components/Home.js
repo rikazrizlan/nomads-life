@@ -6,6 +6,7 @@ import Logo from '../images/logo.png';
 import Post from './Post';
 import {Avatar} from '@material-ui/core';
 import '../App.css';
+import AddPost from './AddPost';
 
 function getModalStyle() {
     const top = 50;
@@ -62,7 +63,7 @@ function Home() {
                     {
                         openNav && (
                             <ul className="home-navigation">
-                                <h6>{currentUser.email}</h6>
+                                <h6>{currentUser.displayName}</h6>
                                 <Link style={{textDecoration:"none"}} to="/profile"><Button className="navBtn" color="secondary">Profile</Button> </Link> 
                                 <Button className="navBtn" color="secondary"  onClick={handleLogout}>Log Out</Button>  
                             </ul>
@@ -85,21 +86,7 @@ function Home() {
           onClose={() => setOpen(false)}
         >
           <div style={modalStyle} className={classes.paper}>
-            <center>Where were you?</center>  
-            <form className="post-form">
-              <div className="form-group">
-                  <label htmlFor="username">Choose image</label>
-                  <input type="file"  required/>
-              </div>
-              <div className="form-group">
-                  <label htmlFor="email">Say something...</label>
-                  <textarea></textarea>
-              </div>
-              <div className="btn-container">
-                <Button type="submit"  variant="contained" color="primary">Cancel</Button>
-                <Button type="submit" className="btn-2" variant="contained" color="secondary">Go!</Button>
-              </div>
-            </form>
+            <AddPost setOpen={setOpen} />
           </div>
       </Modal>
       {/*Add Post Modal */}

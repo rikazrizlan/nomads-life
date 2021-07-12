@@ -50,10 +50,13 @@ function App() {
         setLoading(true)
         await signup(emailRef.current.value, passwordRef.current.value).then(cred => {
           console.log(cred);
-          return db.collection('users').doc(cred.user.uid).set({
-            username: usernameRef.current.value
+          //the following line can be used to create a document to store some user data gathered during the signup process
+          // return db.collection('users').doc(cred.user.uid).set({
+          //   username: usernameRef.current.value
+            return cred.user.updateProfile({
+              displayName: usernameRef.current.value
           }).then(() => {
-            history.push('/home');
+            history.push("/home");
           });
         })
     } catch {
