@@ -35,7 +35,7 @@ function AddPost({setOpen}) {
             .getDownloadURL()
             .then(url => {
                 //post image inside db
-                db.collection("users").doc(currentUser.uid).collection("posts").add({
+                db.collection("posts").add({
                     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
                     caption: caption,
                     image: url,

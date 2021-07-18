@@ -7,6 +7,7 @@ import {AuthProvider} from './contexts/AuthContext';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './components/Home';
+import Profile from './components/Profile';
 
 ReactDOM.render(
       <Router>
@@ -15,6 +16,7 @@ ReactDOM.render(
             <PrivateRoute exact path="/" component={App} />
             <Route path="/app" component={App} />
             <PrivateRoute exact path="/home" component={Home} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
         </AuthProvider>
       </Router>,
