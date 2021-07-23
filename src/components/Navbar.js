@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { db } from '../firebase';
 // import { db } from '../firebase';
 import { Button, makeStyles, Modal } from '@material-ui/core';
 import Logo from '../images/logo.png';
@@ -8,7 +9,7 @@ import Logo from '../images/logo.png';
 import { Avatar } from '@material-ui/core';
 import '../App.css';
 import AddPost from '../components/AddPost';
-import {Add} from '@material-ui/icons'
+import { Add } from '@material-ui/icons'
 
 function getModalStyle() {
     const top = 50;
@@ -37,6 +38,7 @@ function Navbar() {
 
     const [error, setError] = useState('');
     const { currentUser, logout } = useAuth();
+    const [profileImage, setProfileImage] = useState();
     const [openNav, setOpenNav] = useState(false);
     const history = useHistory();
     const [posts, setPosts] = useState([]);
@@ -55,19 +57,24 @@ function Navbar() {
         }
     }
 
+    useEffect(() => {
+        db.collection('users').doc(currentUser?.uid).onSnapshot((doc) => {
+            setProfileImage(doc?.data()?.profileImage);
+        })
+    }, []);
+
     return (
         <div>
             <div className="home-header">
                 <img className="logo" src={Logo} alt="Nomads" />
                 <div className="home-header-left">
-                    <button className="add-post-btn" onClick={() => setOpen(true)}><Add /></button>
-                    <Avatar style={{cursor: "pointer"}} onClick={() => setOpenNav(!openNav)} />
+                    <Button variant="outlined" onClick={() => setOpen(true)}><Add /></Button>
+                    <Avatar src={profileImage ? profileImage : ""} style={{ cursor: "pointer" }} onClick={() => setOpenNav(!openNav)} />
                     {
                         openNav && (
                             <ul className="home-navigation">
-                                <h6>{currentUser.displayName}</h6>
-                                <Link style={{ textDecoration: "none" }} to="/home"><Button className="navBtn" color="secondary">Home</Button> </Link>
-                                <Link style={{ textDecoration: "none" }} to="/profile"><Button className="navBtn" color="secondary">Profile</Button> </Link>
+                                <Link style={{ textDecoration: "none" }} onClick={() => setOpenNav(!openNav)} to="/home"><Button className="navBtn" color="secondary">Home</Button> </Link>
+                                <Link style={{ textDecoration: "none" }} onClick={() => setOpenNav(!openNav)} to="/profile"><Button className="navBtn" color="secondary">Profile</Button> </Link>
                                 <Button className="navBtn" color="secondary" onClick={handleLogout}>Log Out</Button>
                             </ul>
                         )

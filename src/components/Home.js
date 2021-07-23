@@ -22,7 +22,7 @@ function Home() {
       <div className="home-posts">
         {
           posts.map(({ id, post }) => (
-            <Post username={post.username} key={id} image={post.image} caption={post.caption} />
+            <Post username={post?.username} key={id} image={post?.image} caption={post?.caption} />
           ))
         }
       </div>

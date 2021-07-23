@@ -10,6 +10,7 @@ function Profile() {
       <Navbar />
       <div className="profile-section">
         <ProfileHeader />
+        <hr></hr>
         <PostsGrid />
       </div>
     </>

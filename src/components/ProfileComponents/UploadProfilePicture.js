@@ -1,11 +1,11 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import firebase from 'firebase/app';
-import {storage, db} from '../firebase';
-import {useAuth} from '../contexts/AuthContext';
-import '../App.css';
+import {storage, db} from '../../firebase';
+import { useAuth } from '../../contexts/AuthContext';
+import '../../App.css';
 
-function AddPost({setOpen}) {
+function UploadProfilePicture({setOpen}) {
     const [caption, setCaption] = useState("");
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -35,11 +35,8 @@ function AddPost({setOpen}) {
             .getDownloadURL()
             .then(url => {
                 //post image inside db
-                db.collection("posts").add({
-                    timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-                    caption: caption,
-                    image: url,
-                    username: currentUser?.displayName
+                db.collection('users').doc(currentUser?.uid).set({
+                    profileImage: url
                 });
                 setProgress(0);
                 setImage(null);
@@ -52,16 +49,12 @@ function AddPost({setOpen}) {
 
     return (
         <div className="post-upload">
-            <center>Where were you?</center>  
+            <center>Upload a profile picture</center>  
             <progress value={progress} max="100" />
             <form className="post-form">
               <div className="form-group">
                   <label htmlFor="choose-image">Choose image</label>
                   <input type="file" onChange={handleChange} required/>
-              </div>
-              <div className="form-group">
-                  <label htmlFor="caption">Say something...</label>
-                  <textarea onChange={event => setCaption(event.target.value)} value={caption}></textarea>
               </div>
               <div className="btn-container">
                 <Button  onClick={()=> setOpen(false)}  variant="contained" color="primary">Cancel</Button>
@@ -72,4 +65,4 @@ function AddPost({setOpen}) {
     )
 }
 
-export default AddPost
+export default UploadProfilePicture

@@ -16,16 +16,16 @@ export default function PostsGrid({ setSelectedImg }) {
     })
   }, []);
 
-  const userPosts = posts.filter(({ post }) => post.username === currentUser.displayName);
+  const userPosts = posts.filter(({ post }) => post?.username === currentUser?.displayName);
 
   return (
     <div className="profile-post-section">
       <div className="img-grid">
         {userPosts && userPosts.map(({ id, post }) => (
           <div className="img-wrap" key={id}
-            onClick={() => setSelectedImg(post.image)}
+            onClick={() => setSelectedImg(post?.image)}
           >
-            <img src={post.image} alt="Posts" />
+            <img src={post?.image} alt="Posts" />
           </div>
         ))}
       </div>
