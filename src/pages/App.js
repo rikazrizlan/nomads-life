@@ -1,11 +1,11 @@
 import React, {useRef, useState} from 'react';
-import '../App.css';
+import {useHistory} from 'react-router-dom';
 import { Button, makeStyles, Modal} from '@material-ui/core';
 import HikingImg from '../images/hiking2.png';
 import Logo from '../images/logo.png';
-import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
 import {db} from '../firebase';
+import '../App.css';
 
 function getModalStyle() {
   const top = 50;

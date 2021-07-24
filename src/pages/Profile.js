@@ -1,8 +1,8 @@
-import React from 'react';
-import PostsGrid from './ProfileComponents/PostsGrid';
+import React, {useState} from 'react';
+import PostsGrid from '../components/ProfileComponents/PostsGrid';
+import ProfileHeader from '../components/ProfileComponents/ProfileHeader';
+import Navbar from '../components/Navbar';
 import '../App.css';
-import ProfileHeader from './ProfileComponents/ProfileHeader';
-import Navbar from './Navbar';
 
 function Profile() {
   return (

@@ -66,7 +66,7 @@ function Navbar() {
     return (
         <div>
             <div className="home-header">
-                <img className="logo" src={Logo} alt="Nomads" />
+                <Link to="/home"><img className="logo" src={Logo} alt="Nomads" /></Link>
                 <div className="home-header-left">
                     <Button variant="outlined" onClick={() => setOpen(true)}><Add /></Button>
                     <Avatar src={profileImage ? profileImage : ""} style={{ cursor: "pointer" }} onClick={() => setOpenNav(!openNav)} />

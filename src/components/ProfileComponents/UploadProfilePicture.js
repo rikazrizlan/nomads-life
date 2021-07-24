@@ -1,12 +1,10 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
-import firebase from 'firebase/app';
 import {storage, db} from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import '../../App.css';
 
 function UploadProfilePicture({setOpen}) {
-    const [caption, setCaption] = useState("");
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
     const {currentUser} = useAuth();
@@ -40,7 +38,6 @@ function UploadProfilePicture({setOpen}) {
                 });
                 setProgress(0);
                 setImage(null);
-                setCaption("");
                 setOpen(false);
             })
         })
@@ -50,10 +47,10 @@ function UploadProfilePicture({setOpen}) {
     return (
         <div className="post-upload">
             <center>Upload a profile picture</center>  
-            <progress value={progress} max="100" />
+            <progress className="progress-bar" value={progress} max="100" />
             <form className="post-form">
               <div className="form-group">
-                  <label htmlFor="choose-image">Choose image</label>
+                  <label htmlFor="choose-image">Choose Image</label>
                   <input type="file" onChange={handleChange} required/>
               </div>
               <div className="btn-container">

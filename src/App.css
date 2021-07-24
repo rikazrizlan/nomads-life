@@ -111,6 +111,10 @@ header {
   height: 35vh;
 }
 
+.progress-bar {
+  margin-left: 35px;
+}
+
 .post-form .btn-container {
   margin-top: 3vh;
   margin-left: 30%;
@@ -211,6 +215,9 @@ form .btn {
     height: 50px;
     margin-bottom: 20px;
   }
+  .home-header-left {
+    margin-right: 5px;
+  }
 }
 
 
@@ -279,7 +286,7 @@ form .btn {
   justify-content: stretch;
   margin-top: 15vh;
   width: 100%;
-  /* overflow: hidden; */
+  overflow-x: hidden;
 }
 
 .profile-header-section {
@@ -306,11 +313,39 @@ form .btn {
   margin: 20px auto;
 }
 
+.bucket-list-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #FFF;
+  height: 100vh;
+  z-index: 1;
+  transition: 0.5s ease;
+}
+
+.bucket-list-hide {
+  transform: translateX(120%);
+}
+
 
 @media (max-width: 776px) {
   .profile-header-section {
     width: 100%;
     margin-right: 20px;
+  }
+  .profile-header-section .user-details {
+    flex-direction: column;
+  }
+  .profile-header-section .profile-btn-container {
+    position: absolute;
+    right: 10px;
+    top: 80px;
+  }
+  .profile-header-section .user-details .profile-name {
+    font-size: 0.9em;
+    margin-top: -15px;
   }
   .profile-post-section {
     margin: 0;

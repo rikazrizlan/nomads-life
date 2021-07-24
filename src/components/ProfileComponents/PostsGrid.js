@@ -10,8 +10,8 @@ export default function PostsGrid({ setSelectedImg }) {
   useEffect(() => {
     db.collection('posts').orderBy('timeStamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
-        id: doc.id,
-        post: doc.data()
+        id: doc?.id,
+        post: doc?.data()
       })));
     })
   }, []);
@@ -21,7 +21,7 @@ export default function PostsGrid({ setSelectedImg }) {
   return (
     <div className="profile-post-section">
       <div className="img-grid">
-        {userPosts && userPosts.map(({ id, post }) => (
+        {userPosts && userPosts?.map(({ id, post }) => (
           <div className="img-wrap" key={id}
             onClick={() => setSelectedImg(post?.image)}
           >

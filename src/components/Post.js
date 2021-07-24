@@ -3,11 +3,11 @@ import {Avatar} from '@material-ui/core';
 // import {db} from '../firebase';
 // import PostImg from '../images/homebg.jpg';
 
-function Post({username, image, caption}) {
+function Post({username, image, caption, profileImage }) {
     return (
         <div className="post-container">
             <div className="post-header">
-                <Avatar className="post-avatar" alt="Avatar" />
+                <Avatar src={profileImage && profileImage} className="post-avatar" alt="Avatar" />
                 <h3>{username}</h3>
             </div>
             <img className="post-img" src={image} alt="Posts" />
