@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { db } from '../../firebase';
 import { Avatar, Button, makeStyles, Modal } from '@material-ui/core';
 import UploadProfilePicture from './UploadProfilePicture';
-import BucketList from '../BucketList';
+import AddBucketList from '../AddBucketList';
 import '../../App.css';
 
 function getModalStyle() {
@@ -66,7 +66,7 @@ function ProfileHeader() {
           <Button style={{ height: 30, margin: 10 }} variant="outlined">Edit Profile</Button>
           <Button style={{ height: 30 }} variant="outlined">Settings</Button>
         </div>
-        <BucketList open={open} setOpen={setOpen} />
+        <AddBucketList open={open} setOpen={setOpen} />
       </div>
       {
         index === 1 &&
