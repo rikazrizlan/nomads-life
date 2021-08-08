@@ -10,6 +10,7 @@ import { Avatar } from '@material-ui/core';
 import '../App.css';
 import AddPost from '../components/AddPost';
 import { Add } from '@material-ui/icons'
+// import Sidebar from './Sidebar';
 
 function getModalStyle() {
     const top = 50;
@@ -77,6 +78,7 @@ function Navbar() {
                                 <Link style={{ textDecoration: "none" }} onClick={() => setOpenNav(!openNav)} to="/profile"><Button className="navBtn" color="secondary">Profile</Button> </Link>
                                 <Button className="navBtn" color="secondary" onClick={handleLogout}>Log Out</Button>
                             </ul>
+                            // <Sidebar open={openNav} />
                         )
                     }
                 </div>
