@@ -27,9 +27,10 @@ function AddPost({ setOpen }) {
         }
     }
 
+    const imageId = Math.random();
 
     const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        const uploadTask = storage.ref(`images/${imageId+image.name}`).put(image);
         console.log(image);
 
         uploadTask.on("state_changed", (snapshot) => {
@@ -41,7 +42,7 @@ function AddPost({ setOpen }) {
         }, () => {
             storage
                 .ref("images")
-                .child(image.name)
+                .child(imageId+image.name)
                 .getDownloadURL()
                 .then(url => {
                     //post image inside db
