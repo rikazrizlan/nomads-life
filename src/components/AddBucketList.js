@@ -22,10 +22,10 @@ function AddBucketList({ setOpen, open }) {
 
     return (
         <div className={open ? "bucket-list-main" : "bucket-list-hide"}>
-            <ArrowBack onClick={() => setOpen(false)} />
+            <ArrowBack style={{margin: 10}} onClick={() => setOpen(false)} />
             <center>Where to next?</center>
-            <form className="post-form">
-                <div className="form-group">
+            <form className="bucket-form">
+                <div className="bucket-input">
                     <input onChange={event => setBucketList(event.target.value)} value={bucketList} />
                 </div>
                 <div className="btn-container">

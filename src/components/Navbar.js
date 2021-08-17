@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { db } from '../firebase';
-// import { db } from '../firebase';
 import { Button, makeStyles, Modal } from '@material-ui/core';
 import Logo from '../images/logo.png';
-// import Post from '../components/Post';
 import { Avatar } from '@material-ui/core';
 import '../App.css';
 import AddPost from '../components/AddPost';
 import { Add } from '@material-ui/icons'
-// import Sidebar from './Sidebar';
 
 function getModalStyle() {
     const top = 50;
@@ -42,7 +39,6 @@ function Navbar() {
     const [profileImage, setProfileImage] = useState();
     const [openNav, setOpenNav] = useState(false);
     const history = useHistory();
-    const [posts, setPosts] = useState([]);
 
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
@@ -78,7 +74,6 @@ function Navbar() {
                                 <Link style={{ textDecoration: "none" }} onClick={() => setOpenNav(!openNav)} to="/profile"><Button className="navBtn" color="secondary">Profile</Button> </Link>
                                 <Button className="navBtn" color="secondary" onClick={handleLogout}>Log Out</Button>
                             </ul>
-                            // <Sidebar open={openNav} />
                         )
                     }
                 </div>

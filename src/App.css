@@ -329,6 +329,99 @@ form .btn {
   transform: translateX(120%);
 }
 
+.bucket-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -90px;
+}
+
+.bucket-list {
+  min-width: 30%;
+  list-style: none; 
+}
+
+.bucket-list .list-item {
+  margin: 0.5rem;
+  color: black;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+  background: #FAFAFA;
+  box-shadow: 0px 146px 301px rgba(0, 0, 0, 0.00627293), 0px 70.0611px 161.499px rgba(0, 0, 0, 0.01003), 0px 50.2001px 115.641px rgba(0, 0, 0, 0.0129306), 0px 36.9442px 86.8083px rgba(0, 0, 0, 0.016152), 0px 25.2423px 61.0519px rgba(0, 0, 0, 0.0214916), 0px 13.2337px 33.0022px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.bucket-list .list-item li {
+  flex: 1;
+  padding: 0rem 0.5rem;
+}
+
+.bucket-list .list-item .done-btn {
+  background:rgb(72, 133, 72);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.list-completed{
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.bucket-form {
+  height: 35vh;
+}
+
+.bucket-form .btn-container {
+  margin-top: 3vh;
+  margin-left: 30%;
+}
+
+.bucket-form .btn-container .btn-2 {
+  margin-left: 6px;
+}
+
+center {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+form .bucket-input {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+form .bucket-input input {
+  padding: 10px;
+  background: #FAFAFA;
+  box-shadow: 0px 146px 301px rgba(0, 0, 0, 0.00627293), 0px 70.0611px 161.499px rgba(0, 0, 0, 0.01003), 0px 50.2001px 115.641px rgba(0, 0, 0, 0.0129306), 0px 36.9442px 86.8083px rgba(0, 0, 0, 0.016152), 0px 25.2423px 61.0519px rgba(0, 0, 0, 0.0214916), 0px 13.2337px 33.0022px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 0.5px solid #b8b8b8;
+  padding: 10px;
+}
+
+form .btn {
+  font-size: 10px;
+  position: absolute;
+  right: 60px;
+  bottom: 50px;
+}
+
+@media (max-width: 776px) {
+  form .bucket-input {
+    margin: 5px;
+    margin-top: 20px;
+  }
+}
+
 
 @media (max-width: 776px) {
   .profile-header-section {
@@ -340,8 +433,7 @@ form .btn {
   }
   .profile-header-section .profile-btn-container {
     position: absolute;
-    right: 10px;
-    top: 80px;
+    margin-top: -40px;
   }
   .profile-header-section .user-details .profile-name {
     font-size: 0.9em;

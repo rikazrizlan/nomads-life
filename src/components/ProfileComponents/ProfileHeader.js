@@ -46,7 +46,6 @@ function ProfileHeader() {
 
   const setToggle = (num) => {
     if (num !== index) {
-      setOpen(true)
       setIndex(num);
     } else {
       setIndex(0);
@@ -71,8 +70,8 @@ function ProfileHeader() {
       {
         index === 1 &&
         <Modal
-          open={open}
-          onClose={() => setOpen(false)}
+          open={index === 1}
+          onClose={() => setToggle(1)}
         >
           <div style={modalStyle} className={classes.paper}>
             <UploadProfilePicture setOpen={setOpen} />
